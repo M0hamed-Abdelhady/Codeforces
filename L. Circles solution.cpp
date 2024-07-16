@@ -3,60 +3,11 @@
 using namespace std;
 
 #define ll long long
-#define ull unsigned long long
-#define ui unsigned int
-#define pii pair<int, int>
-#define pll pair<ll, ll>
-#define vi vector<int>
-#define vll vector<ll>
-#define vd vector<double>
-#define vp vector<pll>
-#define si set<int>
-#define sll set<ll>
-#define msll multiset<ll>
-#define pq priority_queue<ll>
-#define rpq priority_queue<ll, vi, greater<int>>
-#define f(i, u, x) for (int i = u; i < x; i++)
 #define all(x) x.begin(),x.end()
 #define rall(x) x.rbegin(),x.rend()
-#define nl <<'\n'
-#define sp <<' '
-#ifndef ONLINE_JUDGE
-
-#include "DEBUG.cpp"
-
-#define debug(x) cerr << #x <<" "; let(x); cerr << endl;
-#else
-#define debug(x)
-#endif
-
-class DarkNess {
-public:
-    static void Files() {
-#ifndef ONLINE_JUDGE
-        freopen("INPUT.txt", "r", stdin);
-        freopen("OUTPUT.txt", "w", stdout);
-        freopen("BacKDooR.txt", "w", stderr);
-#endif
-    }
-
-    static void Fast() {
-        ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-    }
-};
 
 
-//-----------------------------------------------------`|||`-----------------------------------------------------\\
-\\-----------------------------------------------------`\|/`-----------------------------------------------------//
-const int N = 2e5 + 3, F = 1e6 + 3, mod = 1e9 + 7,
-        dx[] = {1, -1, 0, 0},
-        dy[] = {0, 0, 1, -1},
-        dx8[] = {1, -1, 0, 0, 1, -1, 1, -1},
-        dy8[] = {0, 0, 1, -1, 1, -1, -1, 1};
-
-enum STATE {
-    UNVISITED = -1, EXPLORED, VISITED
-};
+const int N = 50 + 3, F = 3e3 + 3, mod = 1e9 + 7;
 
 
 struct circle {
@@ -65,7 +16,7 @@ struct circle {
 };
 
 
-bool valid(circle &s, pii x) {
+bool valid(circle &s, pair<int, int> x) {
     double eps = 1e-6;
     double ans = abs(pow(x.first, 2) + pow(x.second, 2) + (2 * s.a * x.first) + (2 * s.b * x.second) + s.c);
     return ans <= eps;
@@ -147,7 +98,7 @@ void solve() {
     for (int i = 0; i < n; ++i) {
         cin >> x[i].first >> x[i].second;
     }
-    if (n < 4)return void(cout << n nl);
+    if (n < 4)return void(cout << n << '\n');
     int q, mx = 0;
     for (int i = 0; i < n; ++i) {
         for (int j = i + 1; j < n; ++j) {
@@ -164,15 +115,12 @@ void solve() {
             }
         }
     }
-    cout << mx nl;
+    cout << mx << '\n';
 }
 
 
 int main() {
-    DarkNess::Fast();
-    DarkNess::Files();
-//-----------------------------------------------------`main`-----------------------------------------------------//
-    ll T = 1;
+    int T;
     cin >> T;
     while (T--)solve();
     return 0;
